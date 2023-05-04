@@ -7,7 +7,8 @@ function renderCartContents() {
   const htmlItems = cartItemTemplate(cartItems);
   // console.log(htmlItems);
   // document.querySelector(".product-list").innerHTML = htmlItems.join("");
-  document.querySelector(".product-list").innerHTML += htmlItems;
+  document.querySelector(".product-list").insertAdjacentHTML("beforeend", htmlItems);
+  // document.querySelector(".product-list").append(htmlItems);
 }
 
 function cartItemTemplate(item) {
