@@ -202,6 +202,27 @@ button {
   grid-column: 3;
 }
 
+.cart-delete {
+  position: relative;
+  grid-column: 3/4;
+  grid-row: 1/2;
+  border: 1px solid var(--dark-grey);
+  margin: auto;
+  padding: 0.2rem 0.4rem;
+  bottom: 2rem;
+  left: 1.8rem;
+}
+
+.cart-delete:hover {
+  background: var(--primary-color);
+}
+
+.cart-delete:active {
+  background: firebrick;
+  color: white;
+  border: white;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
