@@ -32,3 +32,41 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+
+
+//TOTAL IN CART//
+
+// Create cart footer element
+const cartFooter = document.createElement("div");
+cartFooter.classList.add("cart-footer");
+
+// Create cart total element
+const cartTotal = document.createElement("p");
+cartTotal.classList.add("cart-total");
+cartTotal.textContent = "Total: ";
+
+// Append cart total element to cart footer element
+cartFooter.appendChild(cartTotal);
+
+// Append cart footer element to the DOM
+const cartContainer = document.querySelector(".divider");
+cartContainer.appendChild(cartFooter);
+
+// Get cart items from local storage
+const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+// Check if cart is empty
+if (cartItems.length === 0) {
+  cartFooter.classList.add("hide");
+  const emptyCartMessage = document.createElement("p");
+  emptyCartMessage.textContent = "Your cart is empty.";
+  cartFooter.appendChild(emptyCartMessage);
+}
+else
+{ // Handle non-empty cart here, for example:
+  let total = 0;
+  cartItems.forEach(item => {
+    total += item.price * item.quantity;
+  });
+  cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+}
