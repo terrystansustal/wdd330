@@ -2,11 +2,17 @@ import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  // console.log(cartItems);
+  // const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+  const htmlItems = cartItemTemplate(cartItems);
+  // console.log(htmlItems);
+  // document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  document.querySelector(".product-list").insertAdjacentHTML("beforeend", htmlItems);
+  // document.querySelector(".product-list").append(htmlItems);
 }
 
 function cartItemTemplate(item) {
+  // console.log(item.FinalPrice);
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
