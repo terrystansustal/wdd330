@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import {getLocalStorage} from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -50,7 +50,7 @@ cartPage.appendChild(cartFooter);
 // Get cart items from local storage
 const localItems = getLocalStorage("so-cart");
 
-console.log(getLocalStorage("so-cart"))
+
 
 // Check if cart is empty
 if (localItems.length === 0) {
