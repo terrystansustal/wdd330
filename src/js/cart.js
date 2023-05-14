@@ -3,11 +3,11 @@ import { getLocalStorage } from "./utils.mjs";
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   // console.log(cartItems);
-  // const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  const htmlItems = cartItemTemplate(cartItems);
+  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+  // const htmlItems = cartItemTemplate(cartItems);
   // console.log(htmlItems);
-  // document.querySelector(".product-list").innerHTML = htmlItems.join("");
-  document.querySelector(".product-list").innerHTML += htmlItems;
+  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  // document.querySelector(".product-list").innerHTML += htmlItems;
 }
 
 function cartItemTemplate(item) {
