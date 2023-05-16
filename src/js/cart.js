@@ -2,8 +2,13 @@ import {getLocalStorage} from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItemTemplate(cartItems);
-  document.querySelector(".product-list").innerHTML = htmlItems;
+  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+  
+  // Update the count element with the total number of items
+  document.getElementById("count").innerHTML = totalItems.toString();
 }
 
 
