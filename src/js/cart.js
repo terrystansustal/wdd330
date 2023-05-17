@@ -1,34 +1,5 @@
-import { getLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+import shoppingCart from "./shoppingCart.mjs";
 
-function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  // console.log(cartItems);
-  // const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  const htmlItems = cartItemTemplate(cartItems);
-  // console.log(htmlItems);
-  // document.querySelector(".product-list").innerHTML = htmlItems.join("");
-  document.querySelector(".product-list").insertAdjacentHTML("beforeend", htmlItems);
-  // document.querySelector(".product-list").append(htmlItems);
-}
-
-function cartItemTemplate(item) {
-  // console.log(item.FinalPrice);
-  const newItem = `<li class="cart-card divider">
-  <a href="#" class="cart-card__image">
-    <img
-      src="${item.Image}"
-      alt="${item.Name}"
-    />
-  </a>
-  <a href="#">
-    <h2 class="card__name">${item.Name}</h2>
-  </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
-</li>`;
-
-  return newItem;
-}
-
-renderCartContents();
+loadHeaderFooter();
+shoppingCart();
