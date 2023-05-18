@@ -4,6 +4,11 @@ export default function ShoppingCart() {
   const cartItems = getLocalStorage("so-cart");
   const outputEl = document.querySelector(".product-list");
   renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
+
+  const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+  
+  // Update the count element with the total number of items
+  document.getElementById("count").innerHTML = totalItems.toString();
 }
 
 function cartItemTemplate(item) {
