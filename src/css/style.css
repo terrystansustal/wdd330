@@ -110,6 +110,16 @@ button {
   fill: gray;
 }
 
+#count {
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  padding: 2px;
+  border: solid 1px black;
+  border-radius: 10px;
+  background-color: #f0a868;
+}
+
 /* End cart icon styles */
 
 .mission {
@@ -240,4 +250,9 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+/*Total in cart functionality*/
+.hide {
+  display: none;
 }
