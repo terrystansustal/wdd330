@@ -28,6 +28,10 @@ function renderProductDetails() {
   document.querySelector("#productNameWithoutBrand").innerText =
     product.NameWithoutBrand;
   document.querySelector("#productImage").src = product.Image;
+  document.querySelector("#productImage").srcset = 
+    `${product.Image160} 320w,
+     ${product.Image240} 800w,
+     ${product.Image} 1000w`;
   document.querySelector("#productImage").alt = product.Name;
   document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
   document.querySelector("#productColorName").innerText =

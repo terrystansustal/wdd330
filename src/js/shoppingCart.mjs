@@ -57,6 +57,13 @@ function cartItemTemplate(item) {
   <a href="#" class="cart-card__image">
     <img
       src="${item.Image}"
+      sizes="100vw" 
+      srcset="
+        
+        ${item.Image160} 320w,
+        ${item.Image240} 800w,
+        ${item.Image} 1000w
+        "
       alt="${item.Name}"
     />
   </a>
