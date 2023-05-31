@@ -20,7 +20,7 @@ function productCardTemplate(product) {
   return `<li class="product-card">
     <a href="product_pages/index.html?product=${product.Id}">
     <img
-      src="${product.Image.PrimaryMedium}"
+      src="${product.Images.PrimaryMedium}"
       sizes="100vw"
       srcset="
         ${product.Image160} 320w,
