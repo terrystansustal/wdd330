@@ -265,6 +265,29 @@ button {
   border: white;
 }
 
+
+/* Start CSS for newsletter form */
+
+.newsletter-form {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.newsletter {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
