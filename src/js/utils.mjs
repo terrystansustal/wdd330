@@ -102,3 +102,39 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplateFn, mainHeader);
   renderWithTemplate(footerTemplateFn, mainFooter);
 }
+
+
+export function setKeyValue(key, id, newQuantity) {
+  // Get data currently in local storage
+  let currentData = localStorage.getItem(key);
+
+  // If there is no data, current data is an empty array
+  if (!currentData) {
+    console.log("No data found in local storage for key: ", key);
+    return;
+  }
+
+  // If there is data, it is parsed into a JavaScript array
+  currentData = JSON.parse(currentData);
+
+  // Check if parsed data is an array. If not, return error
+  if (!Array.isArray(currentData)) {
+    console.log("Data in local storage for key ", key, " is not an array");
+    return;
+  }
+
+  // Find the item with the given id
+  let itemToUpdate = currentData.find(item => item.Id === id);
+
+  // If item wasn't found, return an error
+  if (!itemToUpdate) {
+    console.log("No item found with id: ", id);
+    return;
+  }
+
+  // Update the item's quantity
+  itemToUpdate.Quantity = newQuantity;
+
+  // Store the updated array back in local storage
+  localStorage.setItem(key, JSON.stringify(currentData));
+}

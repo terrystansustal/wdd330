@@ -6,7 +6,9 @@ export default function ShoppingCart() {
   const total = calculateListTotal(cartItems);
   displayCartTotal(total);
 
+  console.log (cartItems);
   outputEl.addEventListener("click", function(el) {
+    // If clicked icon contains the cart-delete class
     if (el.target.classList.contains("cart-delete")) {
       // Remove item from cart
       el.target.parentElement.remove();
@@ -28,7 +30,7 @@ export default function ShoppingCart() {
   document.getElementById("count").innerHTML = totalItems.toString();
 }
 
-function removeFromCart(storageId, delItemId) {
+export function removeFromCart(storageId, delItemId) {
   // Grab items from local storage
   let cartContents = localStorage.getItem(storageId);
   
@@ -83,7 +85,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">qty: ${item.Quantity}</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
   <span class="cart-delete" data-id="${item.Id}">X</span>
 </li>`;

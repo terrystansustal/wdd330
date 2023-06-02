@@ -1,5 +1,6 @@
 import { findProductById } from "./externalServices.mjs";
-import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, setKeyValue } from "./utils.mjs";
+import { removeFromCart } from "./shoppingCart.mjs";
 
 let product = {};
 
@@ -14,13 +15,32 @@ export default async function productDetails(productId) {
 
 function addToCart() {
   let cartContents = getLocalStorage("so-cart");
-  //check to see if there was anything there
+  // check to see if there was anything there
   if (!cartContents) {
     cartContents = [];
   }
-  // then add the current product to the list
-  cartContents.push(product);
+
+  // get the index of current item using the productId
+  let productIndex = cartContents.findIndex(prod => prod.Id === product.Id);
+
+  // Check to see if item is not already in the cart
+  if (productIndex !== -1) {
+    let productQty = cartContents[0].Quantity;
+
+    // Remove current item from cart to be replaced with updated item
+    removeFromCart("so-cart", product.Id);
+    productQty += 1;
+    // If items are in the bag increment Quantity by one
+    cartContents[productIndex].Quantity = productQty;
+  } else {
+    // If no items exist in the bag, add one to Quantitiy
+    // Push the product to the cartContents
+    cartContents.push(product);
+  }
+
+  // Add product to cart and reset quantity
   setLocalStorage("so-cart", product);
+  setKeyValue("so-cart", product.Id, cartContents[productIndex].Quantity);
 }
 
 function renderProductDetails() {
