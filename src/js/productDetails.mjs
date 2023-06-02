@@ -1,4 +1,4 @@
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./externalServices.mjs";
 import { setLocalStorage, getLocalStorage, setKeyValue } from "./utils.mjs";
 import { removeFromCart } from "./shoppingCart.mjs";
 
@@ -47,7 +47,7 @@ function renderProductDetails() {
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText =
     product.NameWithoutBrand;
-  document.querySelector("#productImage").src = product.Image;
+  document.querySelector("#productImage").src = product.Images.PrimaryLarge;
   document.querySelector("#productImage").srcset = 
     `${product.Image160} 320w,
      ${product.Image240} 800w,
