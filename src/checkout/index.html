@@ -18,6 +18,31 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
+
+      <form action="">
+        <fieldset>
+          <legend>Shipping</legend>
+          <label>First Name<input type="text" name="fname" required></label>
+          <label>Last Name<input type="text" name="lname" required></label>
+          <label>Street<input type="text" name="street" required></label>
+          <label>City<input type="text" name="city" required></label>
+          <label>State<input type="text" name="state" required></label>
+          <label>Zip<input type="number" name="zip" required></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Payment</legend>
+          <label>Card Number<input type="number" name="card-num" required></label>
+          <label>Expiration<input type="date" name="card-exp" required></label>
+          <label>Security Code<input type="number" name="security-code" required></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Order Summary</legend>
+          
+        </fieldset>
+        <input type="submit" value="Checkout" required>
+      </form>
     </main>
 
     <footer id="main-footer"></footer>
