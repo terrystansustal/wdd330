@@ -3,6 +3,8 @@ import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
 export default function ShoppingCart() {
   const cartItems = getLocalStorage("so-cart");
   const outputEl = document.querySelector(".product-list");
+  const total = calculateListTotal(cartItems);
+  displayCartTotal(total);
 
   outputEl.addEventListener("click", function(el) {
     if (el.target.classList.contains("cart-delete")) {
@@ -20,7 +22,7 @@ export default function ShoppingCart() {
 
   renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
 
-  const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const totalItems = cartItems.reduce((total_value, item) => total_value + item.quantity, 0);
   
   // Update the count element with the total number of items
   document.getElementById("count").innerHTML = totalItems.toString();
@@ -52,6 +54,16 @@ function removeFromCart(storageId, delItemId) {
   }
 }
 
+function displayCartTotal(total) {
+  if (total > 0) {
+    // show our checkout button and total if there are items in the cart.
+    document.querySelector(".list-footer").classList.remove("hide");
+    document.querySelector(".list-total").innerText += ` $${total}`;
+  } else {
+    document.querySelector(".list-footer").classList.add("hide");
+  }
+}
+
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
@@ -77,4 +89,10 @@ function cartItemTemplate(item) {
 </li>`;
 
   return newItem;
+}
+
+function calculateListTotal(list) {
+  const amounts = list.map((item) => item.FinalPrice);
+  const total = amounts.reduce((sum, item) => sum + item, 0);
+  return total;
 }
