@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, alertMessage, removeAllAlerts } from "./utils.mjs";
 import { checkout } from "./externalServices.mjs";
 
 function formDataToJSON(formElement) {
@@ -83,11 +83,15 @@ const checkoutProcess = {
     console.log(json);
     try {
       const res = await checkout(json);
-      // console.log(res);
-      return res;
+      console.log(res);
+      setLocalStorage("so-cart", []);
+      location.assign("/checkout/success.html");
     } catch (err) {
-      // console.log(err);
-      return err;
+      console.log(err);
+      for (let message in err.message) {
+        alertMessage(err.message[message]);
+      }
+      console.log(err);
     }
   },
 };
