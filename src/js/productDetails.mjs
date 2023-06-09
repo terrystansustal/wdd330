@@ -1,5 +1,5 @@
 import { findProductById } from "./externalServices.mjs";
-import { setLocalStorage, getLocalStorage, setKeyValue } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, alertMessage, setKeyValue } from "./utils.mjs";
 import { removeFromCart } from "./shoppingCart.mjs";
 
 let product = {};
@@ -41,6 +41,7 @@ function addToCart() {
   // Add product to cart and reset quantity
   setLocalStorage("so-cart", product);
   setKeyValue("so-cart", product.Id, cartContents[productIndex].Quantity);
+  alertMessage(`${product.NameWithoutBrand} added to cart!`);
 }
 
 function renderProductDetails() {
