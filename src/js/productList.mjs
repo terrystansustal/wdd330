@@ -14,20 +14,12 @@ import { renderListWithTemplate } from "./utils.mjs";
 //   </li>`;
 // }
 
-
-
 function productCardTemplate(product) {
   return `<li class="product-card">
-    <a href="product_pages/index.html?product=${product.Id}">
+    <a href="/product_pages/index.html?product=${product.Id}">
     <img
       src="${product.Images.PrimaryMedium}"
-      sizes="100vw"
-      srcset="
-        ${product.Image160} 320w,
-        ${product.Image240} 800w,
-        ${product.Image} 1000w
-        "
-      alt="${product.Name}"
+      alt="Image of ${product.Name}"
     />
     <h3 class="card__brand">${product.Brand.Name}</h3>
     <h2 class="card__name">${product.NameWithoutBrand}</h2>
@@ -40,7 +32,8 @@ export default async function productList(selector, category) {
   const el = document.querySelector(selector);
   // get the list of products
   const products = await getProductsByCategory(category);
-  console.log(products);
+  // console.log(products);
   // render out the product list to the element
   renderListWithTemplate(productCardTemplate, el, products);
+  document.querySelector(".title").innerHTML = category;
 }
