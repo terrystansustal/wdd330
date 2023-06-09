@@ -83,9 +83,11 @@ const checkoutProcess = {
     console.log(json);
     try {
       const res = await checkout(json);
-      console.log(res);
+      // console.log(res);
+      return res;
     } catch (err) {
-      console.log(err);
+      // console.log(err);
+      return err;
     }
   },
 };
